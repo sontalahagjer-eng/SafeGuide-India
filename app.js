@@ -360,3 +360,94 @@ function bookNow(guideId, price) {
 
   alert("Booking Sent! Pay ₹99 to confirm");
 }
+function loadBookings() {
+  const user = auth.currentUser;
+
+  if (!user) return;
+
+  db.collection("bookings")
+    .where("guideId", "==", user.uid)
+    .onSnapshot((snapshot) => {
+
+      const bookingList = document.getElementById("bookingList");
+      bookingList.innerHTML = "";
+
+      snapshot.forEach((doc) => {
+        const b = doc.data();
+
+        bookingList.innerHTML += `
+          <div class="guide-card">
+            <p>Client: ${b.userId}</p>
+            <p>Price: ₹${b.price}</p>
+            <p>Status: ${b.status}</p>
+
+            ${
+              b.status === "pending"
+                ? `
+              <button onclick="acceptBooking('${doc.id}')">Accept</button>
+              <button onclick="rejectBooking('${doc.id}')">Reject</button>
+              `
+                : ""
+            }
+
+            ${
+              b.status === "accepted"
+                ? `
+              <input type="file" onchange="uploadStartPhoto('${doc.id}', this)">
+              `
+                : ""
+            }
+
+            ${
+              b.status === "started"
+                ? `
+              <input type="file" onchange="uploadEndPhoto('${doc.id}', this)">
+              `
+                : ""
+            }
+
+          </div>
+        `;
+      });
+    });
+}
+function acceptBooking(id) {
+  db.collection("bookings").doc(id).update({
+    status: "accepted"
+  });
+}
+
+function rejectBooking(id) {
+  db.collection("bookings").doc(id).update({
+    status: "rejected"
+  });
+
+  alert("Client will get refund (90%)");
+}
+function uploadStartPhoto(id, input) {
+  const file = input.files[0];
+
+  if (!file) return;
+
+  db.collection("bookings").doc(id).update({
+    status: "started"
+  });
+
+  alert("Job Started ✅");
+}
+function uploadEndPhoto(id, input) {
+  const file = input.files[0];
+
+  if (!file) return;
+
+  db.collection("bookings").doc(id).update({
+    status: "completed"
+  });
+
+  alert("Job Completed ✅ You can withdraw now");
+}
+auth.onAuthStateChanged((user) => {
+  if (user && window.location.pathname.includes("guide-dashboard.html")) {
+    loadBookings();
+  }
+});
