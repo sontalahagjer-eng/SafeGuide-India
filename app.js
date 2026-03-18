@@ -266,7 +266,9 @@ function verifyOTP() {
   confirmationResult.confirm(code)
     .then((result) => {
       alert("Login Successful 🎉");
-      console.log(result.user);
+
+      // 👉 REDIRECT TO DASHBOARD
+      window.location.href = "dashboard.html";
     })
     .catch((error) => {
       alert("Invalid OTP ❌");
