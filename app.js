@@ -135,3 +135,18 @@ function endJob() {
 
   alert("Job Completed! Now you can withdraw money.");
 }
+let generatedOTP = "";
+
+function sendOTP() {
+  const phone = document.getElementById("phone").value;
+
+  if (!phone) {
+    alert("Enter phone number");
+    return;
+  }
+
+  // Generate 4 digit OTP
+  generatedOTP = Math.floor(1000 + Math.random() * 9000);
+
+  alert("Your OTP is: " + generatedOTP); // Demo only
+}
