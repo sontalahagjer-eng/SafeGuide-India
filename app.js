@@ -304,3 +304,59 @@ function goBooking() {
 function goGuide() {
   window.location.href = "guide.html";
 }
+function findGuides() {
+  const location = document.getElementById("location").value;
+  const time = document.getElementById("time").value;
+
+  const guideList = document.getElementById("guideList");
+  guideList.innerHTML = "Loading guides...";
+
+  db.collection("guides")
+    .where("city", "==", location)
+    .get()
+    .then((snapshot) => {
+      guideList.innerHTML = "";
+
+      if (snapshot.empty) {
+        guideList.innerHTML = "No guides found";
+        return;
+      }
+
+      snapshot.forEach((doc) => {
+        const guide = doc.data();
+
+        guideList.innerHTML += `
+          <div class="guide-card">
+            <h3>${guide.name}</h3>
+            <p>${guide.bio}</p>
+            <p>📍 ${guide.city}</p>
+
+            <button onclick="bookNow('${doc.id}', '${time}')">
+              Book Now ₹${time} + ₹99
+            </button>
+          </div>
+        `;
+      });
+    });
+}
+function bookNow(guideId, price) {
+  const user = auth.currentUser;
+
+  if (!user) {
+    alert("Login first");
+    return;
+  }
+
+  const bookingFee = 99;
+
+  db.collection("bookings").add({
+    userId: user.uid,
+    guideId: guideId,
+    price: parseInt(price),
+    bookingFee: bookingFee,
+    status: "pending",
+    createdAt: new Date()
+  });
+
+  alert("Booking Sent! Pay ₹99 to confirm");
+}
