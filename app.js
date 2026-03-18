@@ -196,3 +196,25 @@ function verifyOTP() {
       alert("Login Success");
     });
 }
+let confirmationResult;
+
+function sendOTP() {
+  const phone = document.getElementById("phone").value;
+
+  const appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+
+  auth.signInWithPhoneNumber(phone, appVerifier)
+    .then(result => {
+      confirmationResult = result;
+      alert("OTP sent");
+    });
+}
+
+function verifyOTP() {
+  const code = document.getElementById("otp").value;
+
+  confirmationResult.confirm(code)
+    .then(result => {
+      alert("Login Success");
+    });
+}
