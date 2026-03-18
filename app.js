@@ -77,3 +77,10 @@ function book(plan) {
     "\n\nTotal You Pay: ₹" + totalUserPays
   );
 }
+function sendRequest(guideName) {
+  localStorage.setItem("requestedGuide", guideName);
+  alert("Request sent to " + guideName);
+
+  // Redirect to guide panel (demo)
+  window.location.href = "guide-dashboard.html";
+}
