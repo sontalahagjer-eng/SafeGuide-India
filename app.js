@@ -297,3 +297,10 @@ auth.onAuthStateChanged((user) => {
     }
   }
 });
+function goBooking() {
+  window.location.href = "book.html";
+}
+
+function goGuide() {
+  window.location.href = "guide.html";
+}
