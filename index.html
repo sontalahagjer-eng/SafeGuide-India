@@ -130,9 +130,8 @@ const db = firebase.firestore();
 item.innerHTML = `
 👤 ${data.name} <br>
 📍 ${data.city} <br>
-📞 ${data.phone} <br><br>
-<button onclick="selectGuide(&quot;${data.name}&quot;, &quot;$
-{data.city}&quot;)">Select Guide</button>
+<button onclick="selectGuide('${data.name}', '${data.city}')">Select
+Guide</button>
 `;
 
       list.appendChild(item);
@@ -154,10 +153,8 @@ function loadBookings() {
       item.style.margin = "5px";
 
       item.innerHTML = `
-        121 👤 ${data.name} <br> 📍 ${data.city}
-        122 <button style="background:red;" onclick="deleteBooking('${doc.id}')">Delete</button>
-      `;
-
+      👤 ${data.user}
+🧭 Guide: ${data.guide}
       list.appendChild(item);
     });
   });
