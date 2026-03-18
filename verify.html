@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guide Verification</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="form-box">
+
+  <h2>Verify Your Profile ✅</h2>
+
+  <!-- Profile Photo -->
+  <label>Upload Profile Photo</label>
+  <input type="file" id="profilePic">
+
+  <!-- Phone / UPI -->
+  <input type="text" id="phone" placeholder="Phone (GPay / PhonePe / Paytm)">
+
+  <!-- OTP -->
+  <button onclick="sendOTP()">Send OTP</button>
+  <input type="text" id="otp" placeholder="Enter OTP">
+
+  <!-- Terms -->
+  <div class="terms">
+    <h3>Terms & Conditions</h3>
+
+    <p>
+      • Maintain good behavior with clients<br>
+      • Wear proper and clean dress<br>
+      • No smoking or tobacco during service<br>
+      • Drinking only if client allows<br>
+      • Be on time and respectful<br>
+      • Fake bookings or fraud will ban account<br>
+      • Platform gets 25% commission automatically<br>
+      • Guide gets 75% earnings<br>
+      • ₹99 booking fee refundable if not accepted within 5 minutes<br>
+    </p>
+
+    <label>
+      <input type="checkbox" id="agree"> I Agree
+    </label>
+  </div>
+
+  <button onclick="verifyGuide()">Submit & Verify</button>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
