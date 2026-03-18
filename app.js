@@ -229,3 +229,46 @@ function login() {
     // later we connect Firebase
   }
 }
+// 🔥 Firebase Config (PUT YOURS HERE)
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  appId: "YOUR_APP_ID"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+let confirmationResult;
+
+// SEND OTP
+function sendOTP() {
+  const phone = document.getElementById("phone").value;
+
+  window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+
+  auth.signInWithPhoneNumber(phone, window.recaptchaVerifier)
+    .then((result) => {
+      confirmationResult = result;
+      alert("OTP Sent ✅");
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+}
+
+// VERIFY OTP
+function verifyOTP() {
+  const code = document.getElementById("otp").value;
+
+  confirmationResult.confirm(code)
+    .then((result) => {
+      alert("Login Successful 🎉");
+      console.log(result.user);
+    })
+    .catch((error) => {
+      alert("Invalid OTP ❌");
+    });
+}
