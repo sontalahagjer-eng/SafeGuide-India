@@ -184,3 +184,58 @@ body {
   z-index: 1;
 }
 backdrop-filter: blur(5px);
+/* VIDEO BACKGROUND */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* DARK OVERLAY (NO BLUR NOW) */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+/* CENTER BOX */
+.form-box {
+  position: relative;
+  z-index: 1;
+
+  width: 90%;
+  max-width: 360px;
+  padding: 25px;
+
+  border-radius: 20px;
+
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+
+  color: white;
+  text-align: center;
+
+  animation: fadeIn 1s ease;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
