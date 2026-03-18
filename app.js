@@ -28,7 +28,17 @@ function loadGuides() {
 
   const userLocation = localStorage.getItem("location");
 
-  guideList.innerHTML = "";
+  guideList.innerHTML += `
+  <div class="guide-card">
+    <h3>${guide.name}</h3>
+    <p>${guide.bio}</p>
+    <p>Distance: ${Math.floor(Math.random() * 5 + 1)} km</p>
+
+    <button onclick="sendRequest('${guide.name}')">
+      Request Guide
+    </button>
+  </div>
+`;
 
   guides.forEach(guide => {
     if (guide.location.toLowerCase().includes(userLocation.toLowerCase())) {
