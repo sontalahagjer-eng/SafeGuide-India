@@ -163,11 +163,25 @@ function loadBookings() {
   });
 }
   function deleteBooking(id) {
-  db.collection("bookings").doc(id).delete().then(() => {
-    alert("Deleted");
+  // ✅ FIRST
+function selectGuide(name, city) {
+  const userName = prompt("Enter your name:");
+
+  if (!userName) {
+    alert("Name is required");
+    return;
+  }
+
+  db.collection("bookings").add({
+    user: userName,
+    guide: name,
+    city: city,
+    time: new Date()
+  }).then(() => {
+    alert("Guide booked successfully!");
     loadBookings();
   });
 }
 
-loadBookings();
-  loadGuides();
+// ✅ THEN THIS
+function deleteBooking(id) {
