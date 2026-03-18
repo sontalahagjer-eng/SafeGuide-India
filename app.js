@@ -150,3 +150,21 @@ function sendOTP() {
 
   alert("Your OTP is: " + generatedOTP); // Demo only
 }
+function verifyGuide() {
+  const userOTP = document.getElementById("otp").value;
+  const agree = document.getElementById("agree").checked;
+
+  if (userOTP != generatedOTP) {
+    alert("Invalid OTP");
+    return;
+  }
+
+  if (!agree) {
+    alert("Please accept terms");
+    return;
+  }
+
+  alert("Verification Successful! You are now a Guide 🎉");
+
+  window.location.href = "guide-dashboard.html";
+}
