@@ -1,230 +1,3 @@
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-/* BODY CENTER + BACKGROUND IMAGE */
-body {
-  height: 100vh;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* Taj Mahal background */
-  background: url("https://images.unsplash.com/photo-1587135991058-8816c0c78c13") no-repeat center center/cover;
-}
-
-/* DARK OVERLAY */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  background: rgba(0, 0, 0, 0.5);
-  z-index: -1;
-}
-
-/* FORM BOX (GLASS EFFECT) */
-.form-box {
-  width: 90%;
-  max-width: 350px;
-
-  padding: 25px;
-  border-radius: 20px;
-
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-
-  text-align: center;
-  color: white;
-
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-
-  animation: fadeIn 1s ease;
-}
-
-/* TITLE */
-.form-box h2 {
-  margin-bottom: 15px;
-}
-
-/* INPUTS */
-.form-box input {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-
-  border: none;
-  border-radius: 10px;
-
-  outline: none;
-}
-
-/* BUTTON */
-.form-box button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-
-  border: none;
-  border-radius: 10px;
-
-  background: linear-gradient(to right, orange, red);
-  color: white;
-
-  font-weight: bold;
-  cursor: pointer;
-
-  transition: 0.3s;
-}
-
-/* BUTTON HOVER */
-.form-box button:hover {
-  transform: scale(1.05);
-}
-
-/* ANIMATION */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* BODY */
-body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* Background Image (Taj Mahal) */
-  background: url("https://images.unsplash.com/photo-1587135991058-8816c0c78c13") no-repeat center center/cover;
-}
-
-/* DARK OVERLAY (like Uber app) */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.3));
-  z-index: -1;
-}
-
-/* LOGIN CARD */
-.form-box {
-  width: 90%;
-  max-width: 360px;
-
-  background: #111; /* solid dark like Uber */
-  padding: 30px 25px;
-
-  border-radius: 18px;
-
-  color: white;
-  text-align: left;
-
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-
-  animation: slideUp 0.8s ease;
-}
-
-/* TITLE */
-.form-box h2 {
-  font-size: 22px;
-  margin-bottom: 20px;
-}
-
-/* INPUT GROUP */
-.input-group {
-  margin-bottom: 15px;
-}
-
-/* INPUT */
-.input-group input {
-  width: 100%;
-  padding: 14px;
-
-  border: none;
-  border-radius: 10px;
-
-  background: #222;
-  color: white;
-
-  font-size: 14px;
-  outline: none;
-}
-
-/* PLACEHOLDER */
-.input-group input::placeholder {
-  color: #aaa;
-}
-
-/* BUTTON */
-.form-box button {
-  width: 100%;
-  padding: 14px;
-
-  border: none;
-  border-radius: 10px;
-
-  background: #00c853; /* Uber green feel */
-  color: white;
-
-  font-size: 16px;
-  font-weight: bold;
-
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-/* BUTTON HOVER */
-.form-box button:hover {
-  background: #00e676;
-  transform: scale(1.03);
-}
-
-/* SMALL TEXT */
-.form-box p {
-  margin-top: 15px;
-  font-size: 13px;
-  color: #bbb;
-  text-align: center;
-}
-
-/* ANIMATION */
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 * {
   margin: 0;
   padding: 0;
@@ -232,7 +5,6 @@ body::before {
   font-family: Arial;
 }
 
-/* CENTER FULL PAGE */
 body {
   height: 100vh;
   display: flex;
@@ -250,19 +22,11 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
   z-index: -1;
 }
 
-/* CONTAINER FIX */
-.container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* LOGIN BOX */
+/* BOX */
 .form-box {
   width: 90%;
   max-width: 350px;
@@ -288,9 +52,18 @@ input {
 button {
   width: 100%;
   padding: 12px;
-  background: orange;
+  margin-top: 10px;
+
+  background: #00c853;
   border: none;
   color: white;
+
   border-radius: 8px;
   cursor: pointer;
+}
+
+/* LINK */
+a {
+  color: #00e676;
+  text-decoration: none;
 }
