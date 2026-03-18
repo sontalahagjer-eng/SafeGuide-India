@@ -2,17 +2,112 @@
 <html>
 <head>
   <title>SafeGuide India</title>
-</head>
-<body>
-  <h1>Welcome to SafeGuide India 🇮🇳</h1>
-  <p>Book your guide easily!</p>
 
-  <button onclick="book()">Book Now</button>
+  <style>
+    body {
+      font-family: Arial;
+      background: linear-gradient(to bottom, #f4f4f4, #e0e0e0);
+      text-align: center;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-top: 20px;
+    }
+
+    .flag {
+      width: 40px;
+      vertical-align: middle;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 350px;
+      margin: 20px auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    input, button {
+      width: 90%;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #ff6600;
+      color: white;
+      border: none;
+      font-size: 16px;
+    }
+
+    .gallery img {
+      width: 90%;
+      max-width: 350px;
+      border-radius: 10px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>
+    Welcome to SafeGuide India 
+    <img class="flag" src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg">
+  </h1>
+
+  <!-- LOGIN -->
+  <div class="card">
+    <h3>Login</h3>
+    <input id="email" placeholder="Email">
+    <input id="phone" placeholder="Phone Number">
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- BOOKING -->
+  <div class="card">
+    <h3>Book a Guide</h3>
+    <input id="name" placeholder="Your Name">
+    <input id="city" placeholder="City (Delhi, Goa...)">
+    <button onclick="book()">Book Guide</button>
+  </div>
+
+  <!-- IMAGES -->
+  <div class="gallery">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Taj-Mahal.jpg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Mumbai_Skyline.jpg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/India_Gate_in_New_Delhi_03-2016.jpg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Assam_Tea_Garden.jpg">
+  </div>
 
   <script>
+    function login() {
+      let email = document.getElementById("email").value;
+      let phone = document.getElementById("phone").value;
+
+      if(email === "" || phone === "") {
+        alert("Enter email and phone");
+      } else {
+        alert("Login successful!");
+      }
+    }
+
     function book() {
-      alert("Booking successful!");
+      let name = document.getElementById("name").value;
+      let city = document.getElementById("city").value;
+
+      if(name === "" || city === "") {
+        alert("Please fill all fields");
+      } else {
+        alert("Guide booked for " + name + " in " + city);
+      }
     }
   </script>
+
 </body>
 </html>
