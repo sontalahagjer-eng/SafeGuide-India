@@ -479,3 +479,69 @@ auth.onAuthStateChanged((user) => {
     loadEarnings();
   }
 });
+// 🔥 Firebase setup
+const firebaseConfig = { ... };
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+
+// 🔐 AUTH FUNCTIONS
+function sendOTP() { ... }
+function verifyOTP() { ... }
+
+
+// 👨‍💼 GUIDE FUNCTIONS
+function acceptBooking(id) { ... }
+function rejectBooking(id) { ... }
+
+
+// 📸 JOB FUNCTIONS
+function uploadStartPhoto(id, input) { ... }
+function uploadEndPhoto(id, input) { ... }
+
+
+// 💳 ✅ PASTE HERE (BOTTOM)
+
+function bookNow(guideId, price) {
+  const user = auth.currentUser;
+
+  if (!user) {
+    alert("Login first");
+    return;
+  }
+
+  const bookingFee = 99;
+  const totalAmount = parseInt(price) + bookingFee;
+
+  const options = {
+    key: "YOUR_RAZORPAY_KEY",
+    amount: totalAmount * 100,
+    currency: "INR",
+    name: "SafeGuide India",
+    description: "Guide Booking",
+
+    handler: function (response) {
+
+      db.collection("bookings").add({
+        userId: user.uid,
+        guideId: guideId,
+        price: parseInt(price),
+        bookingFee: bookingFee,
+        paymentId: response.razorpay_payment_id,
+        status: "pending",
+        createdAt: new Date()
+      });
+
+      alert("Payment Successful ✅ Booking Confirmed");
+    },
+
+    theme: {
+      color: "#00c853"
+    }
+  };
+
+  const rzp = new Razorpay(options);
+  rzp.open();
+}
