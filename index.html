@@ -153,15 +153,13 @@ function loadBookings() {
       item.style.margin = "5px";
 
       item.innerHTML = `
-      👤 ${data.user}
-🧭 Guide: ${data.guide}
-      list.appendChild(item);
-    });
-  });
-}
-  function deleteBooking(id) {
-  // ✅ FIRST
-function selectGuide(name, city) {
+👤 ${data.user} <br>
+🧭 Guide: ${data.guide} <br>
+📍 ${data.city} <br><br>
+<button style="background:red;" onclick="deleteBooking('${doc.id}')">Delete</button>
+`;
+    list.appendChild(item);
+  function selectGuide(name, city) {
   const userName = prompt("Enter your name:");
 
   if (!userName) {
@@ -177,6 +175,8 @@ function selectGuide(name, city) {
   }).then(() => {
     alert("Guide booked successfully!");
     loadBookings();
+  });
+  }
   });
 }
 
