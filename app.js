@@ -94,3 +94,13 @@ window.onload = function () {
   }
 
 };
+function accept() {
+  alert("Booking Accepted!");
+
+  // Go to job start page
+  window.location.href = "start-job.html";
+}
+
+function reject() {
+  alert("Booking Rejected!");
+}
