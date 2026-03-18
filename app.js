@@ -104,3 +104,14 @@ function accept() {
 function reject() {
   alert("Booking Rejected!");
 }
+function startJob() {
+  const file = document.getElementById("startPhoto").files[0];
+
+  if (!file) {
+    alert("Upload photo first");
+    return;
+  }
+
+  alert("Job Started!");
+  window.location.href = "end-job.html";
+}
