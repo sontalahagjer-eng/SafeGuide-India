@@ -50,8 +50,22 @@ const db = firebase.firestore();
   <video autoplay muted loop id="bg-video">
   <source src="https://cdn.coverr.co/videos/coverr-india-landscape-1576/1080p.mp4" type="video/mp4">
   </video>
-  <div class="form-box">
-  <!-- your login content -->
+  <div
+    <div class="form-box">
+  <h2>Login to SafeGuide 🇮🇳</h2>
+
+  <div class="input-group">
+    <input type="text" placeholder="Phone Number" id="phone">
+  </div>
+
+  <div class="input-group">
+    <input type="text" placeholder="Enter OTP" id="otp">
+  </div>
+
+  <button onclick="sendOTP()">Send OTP</button>
+  <button onclick="verifyOTP()">Verify & Login</button>
+
+  <p>Secure login powered by SafeGuide</p>
   </div>
 </body>
 </html>
