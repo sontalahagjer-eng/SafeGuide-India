@@ -76,6 +76,18 @@
     <input id="city" placeholder="City (Delhi, Goa...)">
     <button onclick="book()">Book Guide</button>
   </div>
+  <!-- GUIDE REGISTRATION -->
+<div class="card">
+  <h3>Become a Guide</h3>
+  
+  <input id="guideName" placeholder="Your Name">
+  <input id="guideCity" placeholder="City">
+  <input id="guidePhone" placeholder="Phone Number">
+  
+  <button onclick="registerGuide()">Register as Guide</button>
+</div>
+  <h3>Available Guides</h3>
+<div id="guideList"></div>
 <h3>All Bookings</h3>
 <div id="bookingList"></div>
   <!-- IMAGES -->
@@ -102,7 +114,30 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+const db = firebase.firestore()
+  function loadGuides() {
+  const list = document.getElementById("guideList");
+  list.innerHTML = "";
+
+  db.collection("guides").get().then((snapshot) => {
+    snapshot.forEach((doc) => {
+      let data = doc.data();
+
+      let item = document.createElement("div");
+      item.style.border = "1px solid #ccc";
+      item.style.padding = "10px";
+      item.style.margin = "5px";
+
+      item.innerHTML = `
+        👤 ${data.name} <br>
+        📍 ${data.city} <br>
+        📞 ${data.phone}
+      `;
+
+      list.appendChild(item);
+    });
+  });
+  }
   
 function loadBookings() {
   const list = document.getElementById("bookingList");
@@ -134,3 +169,4 @@ function loadBookings() {
 }
 
 loadBookings();
+  loadGuides();
