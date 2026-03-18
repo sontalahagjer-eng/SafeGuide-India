@@ -84,3 +84,13 @@ function sendRequest(guideName) {
   // Redirect to guide panel (demo)
   window.location.href = "guide-dashboard.html";
 }
+window.onload = function () {
+
+  // Show request to guide
+  if (document.getElementById("requestText")) {
+    const guide = localStorage.getItem("requestedGuide");
+    document.getElementById("requestText").innerText =
+      "Booking request from client for " + guide;
+  }
+
+};
