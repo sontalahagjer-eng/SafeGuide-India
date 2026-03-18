@@ -7,16 +7,19 @@
 
 <body>
 
-<div class="dashboard">
+<div class="container">
+  <div class="form-box">
 
-  <h2>Guide Requests</h2>
+    <h2>Guide Dashboard 👨‍💼</h2>
 
-  <p id="requestText"></p>
+    <div id="bookingList">Loading bookings...</div>
 
-  <button onclick="accept()">Accept</button>
-  <button onclick="reject()">Reject</button>
-
+  </div>
 </div>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
 
 <script src="app.js"></script>
 
