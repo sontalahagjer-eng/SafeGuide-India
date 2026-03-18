@@ -91,3 +91,48 @@ body, html {
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/da/Taj-Mahal.jpg');
   }
 }
+.form-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #000000, #434343);
+}
+
+.form-box {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 320px;
+  text-align: center;
+}
+
+.form-box input,
+.form-box textarea {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-box textarea {
+  height: 80px;
+}
+
+.form-box button {
+  width: 100%;
+  padding: 10px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-box label {
+  font-size: 12px;
+  display: block;
+  text-align: left;
+  margin-top: 5px;
+}
