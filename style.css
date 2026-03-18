@@ -136,3 +136,22 @@ body, html {
   text-align: left;
   margin-top: 5px;
 }
+.dashboard {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.dashboard input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 250px;
+}
+
+.dashboard button {
+  padding: 10px 20px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
