@@ -84,30 +84,53 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/India_Gate_in_New_Delhi_03-2016.jpg">
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Assam_Tea_Garden.jpg">
   </div>
+</div>
 
-  <script>
-    function login() {
-      let email = document.getElementById("email").value;
-      let phone = document.getElementById("phone").value;
+<!-- ✅ PASTE HERE -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
-      if(email === "" || phone === "") {
-        alert("Enter email and phone");
-      } else {
-        alert("Login successful!");
-      }
-    }
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyAvO4K5esIcGSteP_zfSX4289ZjxTfJoew",
+  authDomain: "safeguide-india-27733.firebaseapp.com",
+  projectId: "safeguide-india-27733",
+  storageBucket: "safeguide-india-27733.appspot.com",
+  messagingSenderId: "149181195290",
+  appId: "1:149181195290:web:574f15afe83f573bdedda3"
+};
 
-    function book() {
-      let name = document.getElementById("name").value;
-      let city = document.getElementById("city").value;
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
-      if(name === "" || city === "") {
-        alert("Please fill all fields");
-      } else {
-        alert("Guide booked for " + name + " in " + city);
-      }
-    }
-  </script>
+function login() {
+  let email = document.getElementById("email").value;
+  let phone = document.getElementById("phone").value;
+
+  if (email === "" || phone === "") {
+    alert("Enter email and phone");
+  } else {
+    alert("Login successful!");
+  }
+}
+
+function book() {
+  let name = document.getElementById("name").value;
+  let city = document.getElementById("city").value;
+
+  if (name === "" || city === "") {
+    alert("Please fill all fields");
+  } else {
+    db.collection("bookings").add({
+      name: name,
+      city: city,
+      time: new Date()
+    }).then(() => {
+      alert("Guide booked for " + name + " in " + city);
+    });
+  }
+}
+</script>
 
 </body>
 </html>
