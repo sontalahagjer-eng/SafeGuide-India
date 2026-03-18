@@ -168,3 +168,9 @@ function verifyGuide() {
 
   window.location.href = "guide-dashboard.html";
 }
+function submitGuide() {
+  alert("Profile Submitted Successfully!");
+
+  // Redirect to verification page
+  window.location.href = "verify.html";
+}
