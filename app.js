@@ -473,3 +473,9 @@ function uploadEndPhoto(id, input) {
     alert("Job Completed ✅ Earnings Added");
   });
 }
+auth.onAuthStateChanged((user) => {
+  if (user && window.location.pathname.includes("guide-dashboard.html")) {
+    loadBookings();
+    loadEarnings();
+  }
+});
