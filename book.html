@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <p class="booking-fee">Booking Fee: ₹99 (one-time)</p>
   <title>Book Guide</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="booking">
+<div class="container">
+  <div class="form-box">
 
-  <h2>Available Guides 👇</h2>
+    <h2>Book a Guide 📍</h2>
 
-  <div id="guideList"></div>
+    <!-- Location -->
+    <input type="text" id="location" placeholder="Enter your city">
 
+    <!-- Time Selection -->
+    <select id="time">
+      <option value="699">2 Hours - ₹699</option>
+      <option value="1099">5 Hours - ₹1099</option>
+      <option value="1199">8 Hours - ₹1199</option>
+      <option value="1699">12 Hours - ₹1699</option>
+      <option value="2199">24 Hours - ₹2199</option>
+      <option value="6999">48 Hours - ₹6999</option>
+    </select>
+
+    <button onclick="findGuides()">Find Guides</button>
+
+    <!-- Guide List -->
+    <div id="guideList"></div>
+
+  </div>
 </div>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
 
 <script src="app.js"></script>
 
