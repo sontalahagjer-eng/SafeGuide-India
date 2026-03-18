@@ -274,3 +274,17 @@ function verifyOTP() {
       alert("Invalid OTP ❌");
     });
 }
+function logout() {
+  auth.signOut().then(() => {
+    alert("Logged out");
+    window.location.href = "index.html";
+  });
+}
+auth.onAuthStateChanged((user) => {
+  if (!user) {
+    // If not logged in → go back to login
+    if (window.location.pathname.includes("dashboard.html")) {
+      window.location.href = "index.html";
+    }
+  }
+});
