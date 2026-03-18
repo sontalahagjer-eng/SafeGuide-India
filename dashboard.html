@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboard</title>
+  <title>SafeGuide Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="container">
   <div class="form-box">
-    <h2>Welcome 🎉</h2>
-    <p>You are logged in successfully</p>
+    <h2>Welcome to SafeGuide 🇮🇳</h2>
+
+    <button onclick="goBooking()">📍 Book a Guide</button>
+
+    <button onclick="goGuide()">🧑‍💼 Become a Guide</button>
 
     <button onclick="logout()">Logout</button>
   </div>
@@ -18,6 +21,7 @@
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
 
 <script src="app.js"></script>
 
