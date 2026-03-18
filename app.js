@@ -451,3 +451,25 @@ auth.onAuthStateChanged((user) => {
     loadBookings();
   }
 });
+function uploadEndPhoto(id, input) {
+  const file = input.files[0];
+
+  if (!file) return;
+
+  db.collection("bookings").doc(id).get().then((doc) => {
+    const data = doc.data();
+
+    const total = data.price;
+
+    const guideAmount = total * 0.75;
+    const adminAmount = total * 0.25;
+
+    db.collection("bookings").doc(id).update({
+      status: "completed",
+      guideAmount: guideAmount,
+      adminAmount: adminAmount
+    });
+
+    alert("Job Completed ✅ Earnings Added");
+  });
+}
