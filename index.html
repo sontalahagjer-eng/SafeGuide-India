@@ -139,6 +139,7 @@ style="background:green; color:white; padding:8px; border:none; border-radius:5p
 Select Guide
 </button>
 `;
+
       list.appendChild(item);
     });
   });
@@ -151,7 +152,7 @@ function loadBookings() {
   db.collection("bookings").get().then((snapshot) => {
     snapshot.forEach((doc) => {
       let data = doc.data();
-item.style.boxShadow = "0 2px 10px rgba(0,0,0,0.2)";
+      item.style.boxShadow = "0 2px 10px rgba(0,0,0,0.2)";
 item.style.borderRadius = "10px";
 item.style.overflow = "hidden";
 item.style.background = "#fff";
