@@ -55,7 +55,59 @@
 </head>
 
 <body>
+  <!-- LOGIN PAGE -->
+<div id="loginPage" style="
+  background-image: url('https://images.unsplash.com/photo-1587474260584-136574528ed5');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+">
 
+  <div style="
+    background: rgba(0,0,0,0.6);
+    padding:30px;
+    border-radius:10px;
+    text-align:center;
+    color:white;
+    width:300px;
+  ">
+    <h2>Welcome to SafeGuide 🇮🇳</h2>
+
+    <input placeholder="Email" style="width:100%; margin:10px 0; padding:10px;">
+    <input type="password" placeholder="Password" style="width:100%; margin:10px 0; padding:10px;">
+
+    <button onclick="loginUser()" style="
+      width:100%;
+      padding:10px;
+      background:green;
+      color:white;
+      border:none;
+      border-radius:5px;
+    ">
+      Login
+    </button>
+  </div>
+</div>
+
+
+  <div style="background:rgba(0,0,0,0.6); padding:30px; border-radius:15px; color:white; text-align:center; width:300px;">
+    <h2>Explore India 🇮🇳</h2>
+
+    <input id="username" placeholder="Enter your name"
+    style="width:100%; padding:10px; margin-top:10px; border-radius:5px; border:none;">
+<button onclick="loginUser()">
+  <div id="mainApp" style="display:none;">
+
+<div style="background:rgba(0,0,0,0.6); ...
+<h2>Explore India 🇮🇳</h2>
+    style="margin-top:15px; width:100%; padding:10px; background:orange; border:none; border-radius:5px;">
+    Login
+    </button>
+  </div>
+</div>
   <h1>
     Welcome to SafeGuide India 
     <img class="flag" src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg">
@@ -66,8 +118,7 @@
     <h3>Login</h3>
     <input id="email" placeholder="Email">
     <input id="phone" placeholder="Phone Number">
-    <button onclick="login()">Login</button>
-  </div>
+    <button onclick="loginUser()">Login</button> 
 
   <!-- BOOKING -->
   <div class="card">
@@ -90,18 +141,7 @@
 <div id="guideList"></div>
 <h3>All Bookings</h3>
 <div id="bookingList"></div>
-  <!-- IMAGES -->
-  <div class="gallery">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Taj-Mahal.jpg">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Mumbai_Skyline.jpg">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/India_Gate_in_New_Delhi_03-2016.jpg">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Assam_Tea_Garden.jpg">
-  </div>
-</div>
-
-<!-- ✅ PASTE HERE -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <!-- 🔥 ADD HERE (LOGIN PAGE) -->
 
 <script>
 const firebaseConfig = {
@@ -174,5 +214,17 @@ list.appendChild(item);
 
 }
 
-// ✅ THEN THIS
 function deleteBooking(id) {
+  db.collection("bookings").doc(id).delete().then(() => {
+    loadBookings();
+  });
+}
+  function loginUser() {
+  document.getElementById("loginPage").style.display = "none";
+  document.getElementById("mainApp").style.display = "block";
+  }
+  </script>
+
+</div>
+</body>
+</html>
