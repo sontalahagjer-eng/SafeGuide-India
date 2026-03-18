@@ -155,3 +155,24 @@ body, html {
   border: none;
   border-radius: 5px;
 }
+.booking {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.guide-card {
+  border: 1px solid #ccc;
+  margin: 15px auto;
+  padding: 15px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.price-box button {
+  margin: 5px;
+  padding: 5px 10px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
