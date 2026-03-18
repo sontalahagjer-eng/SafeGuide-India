@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Become a Guide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<div class="form-page">
+
+  <div class="form-box">
+    <h2>Become a Guide 🇮🇳</h2>
+
+    <!-- Name -->
+    <input type="text" id="name" placeholder="Full Name">
+
+    <!-- Photo -->
+    <label>Upload Profile Photo</label>
+    <input type="file" id="photo">
+
+    <!-- Location -->
+    <input type="text" id="state" placeholder="State (e.g. Assam)">
+    <input type="text" id="district" placeholder="District">
+
+    <!-- Bio -->
+    <textarea id="bio" placeholder="Write about yourself (experience, languages, places you know)"></textarea>
+
+    <!-- Documents -->
+    <label>Upload Aadhar Card</label>
+    <input type="file" id="aadhar">
+
+    <label>Upload PAN Card</label>
+    <input type="file" id="pan">
+
+    <!-- Payment -->
+    <input type="text" id="upi" placeholder="UPI ID (example@upi)">
+    <input type="text" id="bank" placeholder="Bank Account Number">
+
+    <button onclick="submitGuide()">Submit Profile</button>
+
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
