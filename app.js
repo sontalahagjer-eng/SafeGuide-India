@@ -259,20 +259,29 @@ function sendOTP() {
     });
 }
 
-// VERIFY OTP
 function verifyOTP() {
   const code = document.getElementById("otp").value;
 
   confirmationResult.confirm(code)
     .then((result) => {
+      const user = result.user;
+
+      // ✅ Save user in Firestore
+      db.collection("users").doc(user.uid).set({
+        phone: user.phoneNumber,
+        role: "client",
+        createdAt: new Date()
+      });
+
       alert("Login Successful 🎉");
 
-      // 👉 REDIRECT TO DASHBOARD
+      // 👉 Go to dashboard
       window.location.href = "dashboard.html";
     })
     .catch((error) => {
       alert("Invalid OTP ❌");
     });
+}
 }
 function logout() {
   auth.signOut().then(() => {
