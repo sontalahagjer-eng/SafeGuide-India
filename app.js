@@ -115,3 +115,13 @@ function startJob() {
   alert("Job Started!");
   window.location.href = "end-job.html";
 }
+function endJob() {
+  const file = document.getElementById("endPhoto").files[0];
+
+  if (!file) {
+    alert("Upload photo with client");
+    return;
+  }
+
+  alert("Job Completed! Now you can withdraw money.");
+}
