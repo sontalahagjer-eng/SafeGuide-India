@@ -1,20 +1,19 @@
 function login() {
   window.location.href = "dashboard.html";
 }
-function submitGuide() {
-  const name = document.getElementById("name").value;
-  const state = document.getElementById("state").value;
-  const district = document.getElementById("district").value;
-  const bio = document.getElementById("bio").value;
-  const upi = document.getElementById("upi").value;
-  const bank = document.getElementById("bank").value;
 
-  if (!name || !state || !district) {
-    alert("Please fill all required fields");
+function searchGuide() {
+  const location = document.getElementById("location").value;
+  const time = document.getElementById("time").value;
+
+  if (!location || !time) {
+    alert("Please enter location and time");
     return;
   }
 
-  alert("Profile Submitted Successfully!");
+  // Save temporarily
+  localStorage.setItem("location", location);
+  localStorage.setItem("time", time);
 
-  // Later we will save this in Firebase
+  window.location.href = "book.html";
 }
