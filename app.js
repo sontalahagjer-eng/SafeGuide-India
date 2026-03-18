@@ -53,11 +53,27 @@ function loadGuides() {
 }
 
 function book(plan) {
-  alert("Guide booked for " + plan);
-}
+  const bookingFee = 99;
 
-window.onload = function () {
-  if (document.getElementById("guideList")) {
-    loadGuides();
-  }
-};
+  let price = 0;
+
+  if (plan.includes("699")) price = 699;
+  else if (plan.includes("1099")) price = 1099;
+  else if (plan.includes("1199")) price = 1199;
+  else if (plan.includes("1699")) price = 1699;
+  else if (plan.includes("2199")) price = 2199;
+  else if (plan.includes("6999")) price = 6999;
+
+  // 💰 Calculations
+  const platformCommission = price * 0.25;
+  const guideEarning = price * 0.75;
+  const totalUserPays = price + bookingFee;
+
+  alert(
+    "Plan: " + plan +
+    "\n\nGuide Earns (75%): ₹" + guideEarning +
+    "\nPlatform Earns (25%): ₹" + platformCommission +
+    "\nBooking Fee: ₹99" +
+    "\n\nTotal You Pay: ₹" + totalUserPays
+  );
+}
