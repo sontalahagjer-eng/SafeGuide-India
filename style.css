@@ -225,3 +225,72 @@ body::before {
     transform: translateY(0);
   }
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+/* CENTER FULL PAGE */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: url("https://images.unsplash.com/photo-1587135991058-8816c0c78c13") no-repeat center center/cover;
+}
+
+/* DARK OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+/* CONTAINER FIX */
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* LOGIN BOX */
+.form-box {
+  width: 90%;
+  max-width: 350px;
+  padding: 25px;
+
+  background: #111;
+  border-radius: 15px;
+
+  color: white;
+  text-align: center;
+}
+
+/* INPUT */
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 12px;
+  background: orange;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
