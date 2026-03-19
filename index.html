@@ -29,6 +29,66 @@
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
 
 <script src="app.js"></script>
+<script>
+const BASE_URL = "https://YOUR_PROJECT_ID.cloudfunctions.net/api";
 
+async function sendOTP() {
+  const phone = document.querySelector("#phone").value;
+
+  if (!phone) {
+    alert("Enter phone number");
+    return;
+  }
+
+  try {
+    const res = await fetch(BASE_URL + "/send-otp", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ phone })
+    });
+
+    const data = await res.json();
+    alert(data.message || "OTP sent");
+
+  } catch (err) {
+    alert("Error sending OTP ❌");
+    console.error(err);
+  }
+}
+
+async function verifyOTP() {
+  const phone = document.querySelector("#phone").value;
+  const otp = document.querySelector("#otp").value;
+
+  if (!otp) {
+    alert("Enter OTP");
+    return;
+  }
+
+  try {
+    const res = await fetch(BASE_URL + "/verify-otp", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ phone, otp })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      alert("Login successful ✅");
+    } else {
+      alert("Invalid OTP ❌");
+    }
+
+  } catch (err) {
+    alert("Error verifying OTP ❌");
+    console.error(err);
+  }
+}
+</script>
 </body>
 </html>
