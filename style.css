@@ -1,4 +1,19 @@
-.nav-buttons {
-  display: flex;
-  gap: 10px;
+.login-box input {
+  padding: 12px;
+  width: 250px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.login-box button {
+  padding: 12px 20px;
+  background: orange;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 16px;
 }
