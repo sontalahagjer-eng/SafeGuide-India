@@ -1,127 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>SafeGuide Login</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SafeGuide India</title>
+
+<style>
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Full screen Taj Mahal background */
+.hero {
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1587135941948-670b381f08ce') no-repeat center center/cover;
+  position: relative;
+  color: white;
+}
+
+/* Dark overlay */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+/* Top navbar */
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Buttons */
+.nav-buttons button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.book {
+  background: orange;
+  color: white;
+}
+
+.become {
+  background: green;
+  color: white;
+}
+
+/* Center content */
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.content h1 {
+  font-size: 40px;
+}
+
+.content p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* Login box */
+.login-box {
+  margin-top: 20px;
+}
+
+.login-box input {
+  padding: 10px;
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+}
+
+.login-box button {
+  padding: 10px;
+  background: orange;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+</style>
+
 </head>
+
 <body>
 
-<div class="container">
-  <div class="form-box">
-    <h2>Login to SafeGuide 🇮🇳</h2>
+<div class="hero">
+  <div class="overlay"></div>
 
-    <input type="text" id="phone" placeholder="Enter Phone (+91...)">
-    <div id="recaptcha-container"></div>
-
-    <button onclick="sendOTP()">Send OTP</button>
-
-    <input type="text" id="otp" placeholder="Enter OTP">
-
-    <button onclick="verifyOTP()">Verify & Login</button>
-
-    <p><a href="#">Become a Guide</a></p>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">🇮🇳 SafeGuide India</div>
+    <div class="nav-buttons">
+      <button class="book">Book Guide</button>
+      <button class="become">Become Guide</button>
+    </div>
   </div>
+
+  <!-- Center Content -->
+  <div class="content">
+    <h1>Welcome to SafeGuide India 🇮🇳</h1>
+    <p>Explore India safely with trusted local guides</p>
+
+    <!-- Login -->
+    <div class="login-box">
+      <input type="text" placeholder="Enter Phone Number">
+      <button>Send OTP</button>
+    </div>
+  </div>
+
 </div>
 
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
-
-<script src="app.js"></script>
-<script>
-const BASE_URL = "https://YOUR_PROJECT_ID.cloudfunctions.net/api";
-
-async function sendOTP() {
-  const phone = document.querySelector("#phone").value;
-
-  if (!phone) {
-    alert("Enter phone number");
-    return;
-  }
-
-  try {
-    const res = await fetch(BASE_URL + "/send-otp", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ phone })
-    });
-
-    const data = await res.json();
-    alert(data.message || "OTP sent");
-
-  } catch (err) {
-    alert("Error sending OTP ❌");
-    console.error(err);
-  }
-}
-
-async function verifyOTP() {
-  const phone = document.querySelector("#phone").value;
-  const otp = document.querySelector("#otp").value;
-
-  if (!otp) {
-    alert("Enter OTP");
-    return;
-  }
-
-  try {
-    const res = await fetch(BASE_URL + "/verify-otp", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ phone, otp })
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-      alert("Login successful ✅");
-    } else {
-      alert("Invalid OTP ❌");
-    }
-
-  } catch (err) {
-    alert("Error verifying OTP ❌");
-    console.error(err);
-  }
-}
-</script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
-
-<script>
-const firebaseConfig = {
-  apiKey: "YOUR_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com"
-};
-
-firebase.initializeApp(firebaseConfig);
-
-window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sendBtn');
-
-function sendOTP() {
-  const phone = document.getElementById('phone').value;
-
-  firebase.auth().signInWithPhoneNumber(phone, window.recaptchaVerifier)
-    .then((confirmationResult) => {
-      window.confirmationResult = confirmationResult;
-      alert("OTP sent ✅");
-    });
-}
-
-function verifyOTP() {
-  const code = document.getElementById('otp').value;
-
-  confirmationResult.confirm(code).then(() => {
-    alert("Login success ✅");
-  }).catch(() => {
-    alert("Invalid OTP ❌");
-  });
-}
-</script>
 </body>
 </html>
