@@ -138,14 +138,18 @@ body, html {
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
   <script>
   // 🔥 Replace with YOUR Firebase config
-  var firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    appId: "YOUR_APP_ID"
-  };
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 
-  firebase.initializeApp(firebaseConfig);
+<script>
+const firebaseConfig = {
+  apiKey: "PASTE_REAL_API_KEY_HERE",
+  authDomain: "safeguide-india.firebaseapp.com",
+  projectId: "safeguide-india-27733",
+};
+
+firebase.initializeApp(firebaseConfig);
+</script>
 
   // Setup reCAPTCHA
   window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
