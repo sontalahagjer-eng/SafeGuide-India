@@ -190,7 +190,16 @@ firebase.initializeApp(firebaseConfig);
     });
   };
   </script>
-  <script type="module">
+  <script src="firebase-app.js"></script>
+<script src="firebase-auth.js"></script>
+
+<script>
+const firebaseConfig = { ...REAL DATA... };
+
+firebase.initializeApp(firebaseConfig);
+
+// your OTP code here
+</script>
   const firebaseConfig = {
     apiKey: "AIzaSyXXXXXXX",
     authDomain: "safeguide-india.firebaseapp.com",
