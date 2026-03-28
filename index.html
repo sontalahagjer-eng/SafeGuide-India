@@ -182,55 +182,19 @@ document.getElementById("verifyBtn").onclick = function () {
   });
 };
 </script>
-  // Send OTP
-  function sendOTP() {
-    var number = document.getElementById("phone").value;
-    var phoneNumber = "+91" + number;
-
-    firebase.auth().signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
-      .then(function (confirmationResult) {
-        window.confirmationResult = confirmationResult;
-
-        alert("OTP Sent!");
-
-        document.getElementById("otp").style.display = "block";
-        document.getElementById("verifyBtn").style.display = "block";
-      })
-      .catch(function (error) {
-        alert(error.message);
-      });
-  }
-
-  // Verify OTP
-  document.getElementById("verifyBtn").onclick = function () {
-    var code = document.getElementById("otp").value;
-
-    confirmationResult.confirm(code).then(function (result) {
-      alert("Login Successful 🎉");
-
-      // 👉 Redirect after login
-      window.location.href = "home.html";
-
-    }).catch(function (error) {
-      alert("Wrong OTP ❌");
-    });
-  };
+  
   </script>
-  <script src="firebase-app.js"></script>
-<script src="firebase-auth.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 
 <script>
+const firebaseConfig = {
+  apiKey: "YOUR_REAL_KEY",
+  authDomain: "safeguide-india.firebaseapp.com",
+  projectId: "safeguide-india-27733"
+};
 
 firebase.initializeApp(firebaseConfig);
 
-// your OTP code here
+// ALL OTP CODE HERE (ONLY ONCE)
 </script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyXXXXXXX",
-    authDomain: "safeguide-india.firebaseapp.com",
-    projectId: "safeguide-india-27733",
-    ...
-  };
-  </script>
-</body>
-</html>
